@@ -11,7 +11,7 @@ class Gul extends StatelessWidget {
       height: 150,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.cyan,
+        color: Colors.white70,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -32,7 +32,7 @@ class Gul extends StatelessWidget {
                   child: Text(
                     'Gül Yapımı',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
@@ -48,7 +48,7 @@ class Gul extends StatelessWidget {
                       );
                     },
                     icon: Icon(
-                      color: Colors.white,
+                      color: Colors.black,
                       FontAwesomeIcons.circleArrowRight,
                       size: 30,
                     ),
