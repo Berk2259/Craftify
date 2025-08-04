@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:craftify/DetayScreen/DetayScreen.dart';
+import 'package:craftify/Widget/widget.dart'; // MalzemeItem burada olmalı
 
 class GulScreen extends StatefulWidget {
   const GulScreen({super.key});
@@ -10,11 +12,8 @@ class GulScreen extends StatefulWidget {
 }
 
 class _GulScreenState extends State<GulScreen> {
-  bool _isPaperExpanded = false;
-
   void _launchUrl() async {
     final Uri url = Uri.parse('https://www.youtube.com/watch?v=Ep-DoqqDBE4');
-
     try {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } catch (e) {
@@ -40,7 +39,6 @@ class _GulScreenState extends State<GulScreen> {
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Container(
-                width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   color: Colors.white70,
@@ -50,7 +48,6 @@ class _GulScreenState extends State<GulScreen> {
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Container(
-                        width: double.infinity,
                         height: 75,
                         decoration: BoxDecoration(
                           color: Colors.blue,
@@ -82,7 +79,6 @@ class _GulScreenState extends State<GulScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Container(
-                          width: double.infinity,
                           decoration: BoxDecoration(
                             color: Colors.blue,
                             borderRadius: BorderRadius.circular(15),
@@ -90,309 +86,80 @@ class _GulScreenState extends State<GulScreen> {
                           child: Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 16.0,
-                                  right: 16.0,
-                                  top: 16.0,
-                                ),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Image(
-                                          image: AssetImage(
-                                            'assets/images/glue.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Uhu',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.normal,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: MalzemeKart(
+                                  imagePath: 'assets/images/glue.png',
+                                  label: 'Uhu',
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 16.0,
-                                  right: 16.0,
-                                  top: 8.0,
-                                ),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Image(
-                                          image: AssetImage(
-                                            'assets/images/tape.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Bant',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.normal,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                              MalzemeKart(
+                                imagePath: 'assets/images/tape.png',
+                                label: 'Bant',
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 16.0,
-                                  right: 16.0,
-                                  top: 8.0,
-                                ),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Image(
-                                          image: AssetImage(
-                                            'assets/images/scissor.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Makas',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.normal,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                              MalzemeKart(
+                                imagePath: 'assets/images/scissor.png',
+                                label: 'Makas',
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 16.0,
-                                  right: 16.0,
-                                  top: 8.0,
-                                ),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Image(
-                                          image: AssetImage(
-                                            'assets/images/ruler.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Cetvel',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.normal,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                              MalzemeKart(
+                                imagePath: 'assets/images/ruler.png',
+                                label: 'Cetvel',
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 16.0,
-                                  right: 16.0,
-                                  top: 8.0,
-                                ),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Image(
-                                          image: AssetImage(
-                                            'assets/images/needle.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'İğne',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.normal,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                              MalzemeKart(
+                                imagePath: 'assets/images/needle.png',
+                                label: 'İğne',
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 16.0,
-                                  right: 16.0,
-                                  top: 8.0,
-                                ),
-                                child: Column(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          _isPaperExpanded = !_isPaperExpanded;
-                                        });
-                                      },
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 50,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            15,
-                                          ),
-                                          color: Colors.white,
+                              MalzemeKart(
+                                imagePath: 'assets/images/paper1.png',
+                                label: 'Kağıt',
+                              ),
+                              Spacer(),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: ElevatedButton.icon(
+                                        icon: const Icon(
+                                          FontAwesomeIcons.video,
                                         ),
-                                        child: Row(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.all(
-                                                16.0,
-                                              ),
-                                              child: Image(
-                                                image: AssetImage(
-                                                  'assets/images/paper1.png',
-                                                ),
-                                              ),
+                                        label: const Text(
+                                          'Video',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          minimumSize: const Size(150, 50),
+                                        ),
+                                        onPressed: _launchUrl,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder:
+                                                  (context) => GulDetayScreen(),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(
-                                                8.0,
-                                              ),
-                                              child: Text(
-                                                'Kağıt',
-                                                style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle: FontStyle.normal,
-                                                ),
-                                              ),
-                                            ),
-                                            const Spacer(),
-                                            Icon(
-                                              _isPaperExpanded
-                                                  ? Icons.keyboard_arrow_up
-                                                  : Icons.keyboard_arrow_down,
-                                            ),
-                                            const SizedBox(width: 10),
-                                          ],
+                                          );
+                                        },
+                                        label: const Text(
+                                          'Detay',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        icon: const Icon(
+                                          FontAwesomeIcons.circleInfo,
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          minimumSize: const Size(150, 50),
                                         ),
                                       ),
                                     ),
-                                    AnimatedCrossFade(
-                                      duration: const Duration(
-                                        milliseconds: 200,
-                                      ), // geçiş süresi
-                                      crossFadeState:
-                                          _isPaperExpanded
-                                              ? CrossFadeState.showFirst
-                                              : CrossFadeState.showSecond,
-                                      firstChild: Container(
-                                        width: double.infinity,
-                                        margin: const EdgeInsets.only(top: 8),
-                                        padding: const EdgeInsets.all(12),
-                                        decoration: BoxDecoration(
-                                          color: Colors.white70,
-                                          borderRadius: BorderRadius.circular(
-                                            15,
-                                          ),
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: const [
-                                            Text(
-                                              "• A4 boyutunda renkli kağıtlar",
-                                            ),
-                                            SizedBox(height: 4),
-                                            Text(
-                                              "• İstediğiniz renkte kare şekiller",
-                                            ),
-                                            SizedBox(height: 4),
-                                            Text("• Kalın mukavva taban"),
-                                          ],
-                                        ),
-                                      ),
-                                      secondChild:
-                                          const SizedBox.shrink(), // boş görünüm
-                                    ),
-                                  ],
-                                ),
-                              ),
-
-                              const Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: ElevatedButton.icon(
-                                  style: ElevatedButton.styleFrom(
-                                    minimumSize: const Size(200, 50),
                                   ),
-                                  icon: const Icon(FontAwesomeIcons.video),
-                                  label: const Text(
-                                    'Videoyu İzle',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  onPressed: _launchUrl,
-                                ),
+                                ],
                               ),
                             ],
                           ),

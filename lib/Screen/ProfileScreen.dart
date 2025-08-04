@@ -10,7 +10,7 @@ class Profilescreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.deepPurple.shade900,
         centerTitle: true,
-        title: Text('Profil Sayfası', style: TextStyle(color: Colors.white)),
+        title: Text('Profil Sayfası ', style: TextStyle(color: Colors.white)),
       ),
     );
   }

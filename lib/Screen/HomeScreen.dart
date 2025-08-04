@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.deepPurple.shade900,
-        title: Text('Ana Sayfa', style: TextStyle(color: Colors.white)),
+        title: Text('Craftify', style: TextStyle(color: Colors.white)),
       ),
       backgroundColor: Colors.deepPurple.shade300,
       body: SingleChildScrollView(
