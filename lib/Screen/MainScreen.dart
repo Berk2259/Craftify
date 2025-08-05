@@ -12,7 +12,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _page = 1;
 
-  final List<Widget> _pages = [FavoriteScreen(), HomeScreen(), Profilescreen()];
+  final List<Widget> _pages = [
+    FavoriteScreen(),
+    HomeScreen(),
+    ProfileScreen()
+  ];
   final List<Widget> _icons = [
     Icon(Icons.favorite, size: 30, color: Colors.white),
     Icon(Icons.home, size: 30, color: Colors.white),
