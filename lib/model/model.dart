@@ -1,1 +1,1 @@
-export 'profile_özellik_card_model.dart';
+export 'hakkinda_özellik_card_model.dart';
