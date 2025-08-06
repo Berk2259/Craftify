@@ -12,15 +12,19 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _page = 1;
 
-  final List<Widget> _pages = [
-    FavoriteScreen(),
-    HomeScreen(),
-    ProfileScreen()
-  ];
+  final List<Widget> _pages = [FavoriteScreen(), HomeScreen(), ProfileScreen()];
   final List<Widget> _icons = [
     Icon(Icons.favorite, size: 30, color: Colors.white),
     Icon(Icons.home, size: 30, color: Colors.white),
-    Icon(Icons.person, size: 30, color: Colors.white),
+    ClipRRect(
+      borderRadius: BorderRadius.circular(25),
+      child: Image.asset(
+        'assets/images/logo.png',
+        width: 30,
+        height: 30,
+        fit: BoxFit.cover,
+      ),
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
       body: _pages[_page],
       bottomNavigationBar: CurvedNavigationBar(
         animationDuration: Duration(milliseconds: 300),
-        height: 65,
+        height: 60,
         items: _icons,
         index: _page,
         backgroundColor: Colors.transparent,
