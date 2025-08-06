@@ -1,0 +1,1 @@
+export 'profile_özellik_card_model.dart';

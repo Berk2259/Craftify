@@ -1,4 +1,7 @@
+import 'package:craftify/Widget/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:craftify/model/model.dart'; // Model burada tanımlı olmalı
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -25,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top: 8.0),
               child: Text(
                 'Craftify',
                 style: TextStyle(
@@ -40,39 +43,41 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(fontSize: 15, color: Colors.white),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Container(
-                width: double.infinity,
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white70,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.deepPurple.shade900,
-                            ),
-                            child: Icon(
-                              Icons.favorite,
-                              size: 30,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              padding: const EdgeInsets.only(left: 20.0, top: 50.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(FontAwesomeIcons.lightbulb, color: Colors.yellow),
+                  SizedBox(width: 10),
+                  Text(
+                    'Özellikler',
+                    style: TextStyle(fontSize: 25, color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            ProfileOzellikCardWidget(
+              ozellik: ProfileOzellikCardModel(
+                Baslik: 'Favoriler',
+                Aciklama: 'Beğendiğin Origamiyi Favorile',
+                icon: Icons.favorite,
+                color: Colors.deepPurple.shade900,
+              ),
+            ),
+            ProfileOzellikCardWidget(
+              ozellik: ProfileOzellikCardModel(
+                Baslik: 'Ana Sayfa',
+                Aciklama: 'Sevebileceğin origamileri burda bulabilirsin',
+                icon: Icons.home,
+                color: Colors.red,
+              ),
+            ),
+            ProfileOzellikCardWidget(
+              ozellik: ProfileOzellikCardModel(
+                Baslik: 'Profil Sayfası',
+                Aciklama: 'Uygulama hakkında bilgiler bulunur',
+                image: 'assets/images/logo.png',
+                color: Colors.blue,
               ),
             ),
             SizedBox(height: 100),
