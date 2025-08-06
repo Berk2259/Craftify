@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:craftify/Widget/widget.dart';
 
 class OwnScreen extends StatefulWidget {
   const OwnScreen({super.key});
@@ -16,6 +17,32 @@ class _OwnScreenState extends State<OwnScreen> {
         backgroundColor: Colors.deepPurple.shade900,
         centerTitle: true,
         title: Text('Kendi Bölümün', style: TextStyle(color: Colors.white)),
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 70),
+        child: FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Center(
+              child: Stack(
+                alignment: Alignment.topCenter,
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: -40,
+                    child: ThoughtBubble(
+                      text: "Henüz bir şey eklemedin mi? Tıkla ve Ekle ",
+                    ),
+                  ),
+                  Image.asset('assets/images/cartoon.png'),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+        ],
       ),
     );
   }

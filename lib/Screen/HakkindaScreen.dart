@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
           children: [
             Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 50),
                 child: CircleAvatar(
                   radius: 80,
                   backgroundImage: AssetImage('assets/images/logo.png'),
@@ -43,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(fontSize: 15, color: Colors.white),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 50.0),
+              padding: const EdgeInsets.only(left: 20.0, top: 30.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -58,10 +58,18 @@ class ProfileScreen extends StatelessWidget {
             ),
             ProfileOzellikCardWidget(
               ozellik: ProfileOzellikCardModel(
+                Baslik: 'Kendi Bölümün',
+                Aciklama: 'Beğendiğin Origamiyi Favorile',
+                icon: FontAwesomeIcons.file,
+                color: Colors.lightBlue,
+              ),
+            ),
+            ProfileOzellikCardWidget(
+              ozellik: ProfileOzellikCardModel(
                 Baslik: 'Favoriler',
                 Aciklama: 'Beğendiğin Origamiyi Favorile',
                 icon: Icons.favorite,
-                color: Colors.deepPurple.shade900,
+                color: Colors.pink,
               ),
             ),
             ProfileOzellikCardWidget(
