@@ -12,7 +12,7 @@ class MalzemeKart extends StatelessWidget {
       padding: EdgeInsets.all(8.0),
       child: Container(
         width: double.infinity,
-        height: 50,
+        height: 60,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: Colors.white,
@@ -20,8 +20,8 @@ class MalzemeKart extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset(imagePath),
+              padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+              child: Image.asset(imagePath, width: 30, height: 50),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
