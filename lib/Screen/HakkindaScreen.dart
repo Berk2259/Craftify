@@ -61,23 +61,23 @@ class ProfileScreen extends StatelessWidget {
                 Baslik: 'Kendi Bölümün',
                 Aciklama: 'Beğendiğin Origamiyi Favorile',
                 icon: FontAwesomeIcons.file,
-                color: Colors.lightBlue,
+                color: Colors.red,
               ),
             ),
             ProfileOzellikCardWidget(
               ozellik: ProfileOzellikCardModel(
                 Baslik: 'Favoriler',
                 Aciklama: 'Beğendiğin Origamiyi Favorile',
-                icon: Icons.favorite,
-                color: Colors.pink,
+                image: 'assets/images/heart.png',
+                color: Colors.deepPurple,
               ),
             ),
             ProfileOzellikCardWidget(
               ozellik: ProfileOzellikCardModel(
                 Baslik: 'Ana Sayfa',
                 Aciklama: 'Sevebileceğin origamileri burda bulabilirsin',
-                icon: Icons.home,
-                color: Colors.red,
+                image: 'assets/images/house.png',
+                color: Colors.lightBlue,
               ),
             ),
             ProfileOzellikCardWidget(
