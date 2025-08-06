@@ -20,7 +20,12 @@ class _OwnScreenState extends State<OwnScreen> {
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 70),
-        child: FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
+        child: FloatingActionButton(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.deepPurple.shade900,
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
       ),
       body: Column(
         children: [

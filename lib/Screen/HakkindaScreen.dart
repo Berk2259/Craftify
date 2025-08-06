@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
             ProfileOzellikCardWidget(
               ozellik: ProfileOzellikCardModel(
                 Baslik: 'Kendi Bölümün',
-                Aciklama: 'Beğendiğin Origamiyi Favorile',
+                Aciklama: 'Kendi Origamini uygualamaya ekle',
                 icon: FontAwesomeIcons.file,
                 color: Colors.red,
               ),
