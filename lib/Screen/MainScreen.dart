@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:craftify/Screen/Screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -10,10 +11,16 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _page = 1;
+  int _page = 2;
 
-  final List<Widget> _pages = [FavoriteScreen(), HomeScreen(), ProfileScreen()];
+  final List<Widget> _pages = [
+    OwnScreen(),
+    FavoriteScreen(),
+    HomeScreen(),
+    ProfileScreen(),
+  ];
   final List<Widget> _icons = [
+    Icon(FontAwesomeIcons.file, size: 30, color: Colors.white),
     Icon(Icons.favorite, size: 30, color: Colors.white),
     Icon(Icons.home, size: 30, color: Colors.white),
     ClipRRect(
