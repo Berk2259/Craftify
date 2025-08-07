@@ -2,6 +2,8 @@ import 'package:craftify/DetayScreen/DetayScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:craftify/Widget/widget.dart';
 import '../model/own_item_store.dart';
+import 'package:provider/provider.dart';
+import '../model/own_favorite_model.dart';
 
 class OwnScreen extends StatefulWidget {
   const OwnScreen({super.key});
@@ -37,6 +39,7 @@ class _OwnScreenState extends State<OwnScreen> {
   @override
   Widget build(BuildContext context) {
     final items = OwnItemStore().items;
+    final ownFavoriteProvider = Provider.of<OwnFavoriteProvider>(context);
     return Scaffold(
       backgroundColor: Colors.deepPurple.shade300,
       appBar: AppBar(
@@ -133,24 +136,53 @@ class _OwnScreenState extends State<OwnScreen> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      trailing: IconButton(
-                                        icon: Icon(Icons.arrow_forward_ios),
-                                        onPressed: () async {
-                                          final result = await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder:
-                                                  (context) => OwnDetayScreen(
-                                                    initialName: name,
-                                                    initialMaterials: materials,
-                                                    editIndex: index,
-                                                  ),
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          // Favori butonu
+                                          IconButton(
+                                            icon: Icon(
+                                              ownFavoriteProvider.isFavorite(name, index) 
+                                                ? Icons.favorite 
+                                                : Icons.favorite_border,
+                                              color: ownFavoriteProvider.isFavorite(name, index) 
+                                                ? Colors.red 
+                                                : Colors.grey,
                                             ),
-                                          );
-                                          if (result == true) {
-                                            await _loadItems(); // Refresh the list after editing
-                                          }
-                                        },
+                                            onPressed: () {
+                                              final favoriteItem = OwnFavoriteItem(
+                                                name: name,
+                                                materials: materials,
+                                                originalIndex: index,
+                                              );
+                                              if (ownFavoriteProvider.isFavorite(name, index)) {
+                                                ownFavoriteProvider.removeFavorite(favoriteItem);
+                                              } else {
+                                                ownFavoriteProvider.addFavorite(favoriteItem);
+                                              }
+                                            },
+                                          ),
+                                          // Düzenleme butonu
+                                          IconButton(
+                                            icon: Icon(Icons.arrow_forward_ios),
+                                            onPressed: () async {
+                                              final result = await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder:
+                                                      (context) => OwnDetayScreen(
+                                                        initialName: name,
+                                                        initialMaterials: materials,
+                                                        editIndex: index,
+                                                      ),
+                                                ),
+                                              );
+                                              if (result == true) {
+                                                await _loadItems(); // Refresh the list after editing
+                                              }
+                                            },
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),

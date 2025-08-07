@@ -12,8 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => FavoriteProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+        ChangeNotifierProvider(create: (_) => OwnFavoriteProvider()),
+      ],
       child: MaterialApp(debugShowCheckedModeBanner: false, home: MainScreen()),
     );
   }

@@ -51,6 +51,12 @@ class OwnItemStore {
     await save();
   }
 
+  // Favori durumunu güncellemek için method
+  Future<void> updateFavoriteIndexes() async {
+    // Bu method, item'ların index'lerini favori sisteminde güncellemek için kullanılabilir
+    // Şimdilik boş bırakıyoruz, gelecekte gerekirse implement edilebilir
+  }
+
   Future<void> clear() async {
     _items.clear();
     await save();
