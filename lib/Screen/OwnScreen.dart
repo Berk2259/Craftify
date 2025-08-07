@@ -1,3 +1,4 @@
+import 'package:craftify/DetayScreen/DetayScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:craftify/Widget/widget.dart';
 
@@ -23,7 +24,12 @@ class _OwnScreenState extends State<OwnScreen> {
         child: FloatingActionButton(
           foregroundColor: Colors.white,
           backgroundColor: Colors.deepPurple.shade900,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => OwnDetayScreen()),
+            );
+          },
           child: Icon(Icons.add),
         ),
       ),
