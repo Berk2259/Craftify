@@ -15,20 +15,22 @@ class _OwnScreenState extends State<OwnScreen> {
 
   @override
   void initState() {
+    //bir widget'ın durumu oluşturulurken ilk kez çalışır.
     super.initState();
-    _loadItems();
+    _loadItems(); //bu method çağrılır
   }
 
   Future<void> _loadItems() async {
-    await OwnItemStore().load();
+    await OwnItemStore()
+        .load(); //OwnItemStore sınıfından bir nesne oluşturup onun load() methodunu çağırır.
     setState(() {
-      _loading = false;
+      _loading = false; //loading kısmını false yapar
     });
   }
 
   @override
   void didChangeDependencies() {
-    super.didChangeDependencies();
+    super.didChangeDependencies(); //üst sınıftaki işlemlerin yapılmaısnı sağlar
     _loadItems();
   }
 
@@ -90,36 +92,23 @@ class _OwnScreenState extends State<OwnScreen> {
                                 final materials = entry[name]!;
                                 return Dismissible(
                                   key: Key('$name-$index'),
+                                  direction:
+                                      DismissDirection
+                                          .endToStart, // sadece sağdan sola
                                   background: Container(
-                                    color: Colors.green,
-                                    alignment: Alignment.centerLeft,
-                                    padding: const EdgeInsets.only(left: 24),
-                                    child: const Icon(Icons.edit, color: Colors.white, size: 32),
-                                  ),
-                                  secondaryBackground: Container(
                                     color: Colors.red,
                                     alignment: Alignment.centerRight,
                                     padding: const EdgeInsets.only(right: 24),
-                                    child: const Icon(Icons.delete, color: Colors.white, size: 32),
+                                    child: const Icon(
+                                      Icons.delete,
+                                      color: Colors.white,
+                                      size: 32,
+                                    ),
                                   ),
                                   confirmDismiss: (direction) async {
-                                    if (direction == DismissDirection.endToStart) {
-                                      // Sil
+                                    if (direction ==
+                                        DismissDirection.endToStart) {
                                       await OwnItemStore().removeAt(index);
-                                      await _loadItems();
-                                      return false; // Kartı ListView'dan elle kaldırıyoruz
-                                    } else if (direction == DismissDirection.startToEnd) {
-                                      // Edit
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => OwnDetayScreen(
-                                            initialName: name,
-                                            initialMaterials: materials,
-                                            editIndex: index,
-                                          ),
-                                        ),
-                                      );
                                       await _loadItems();
                                       return false;
                                     }
@@ -134,24 +123,29 @@ class _OwnScreenState extends State<OwnScreen> {
                                     margin: const EdgeInsets.symmetric(
                                       vertical: 8,
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            name,
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
+                                    child: ListTile(
+                                      title: Text(
+                                        name,
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      trailing: IconButton(
+                                        icon: Icon(Icons.arrow_forward_ios),
+                                        onPressed: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder:
+                                                  (context) => OwnDetayScreen(
+                                                    initialName: name,
+                                                    initialMaterials: materials,
+                                                    editIndex: index,
+                                                  ),
                                             ),
-                                          ),
-                                          const SizedBox(height: 8),
-                                          ...materials
-                                              .map((m) => Text('- $m'))
-                                              .toList(),
-                                        ],
+                                          );
+                                        },
                                       ),
                                     ),
                                   ),
