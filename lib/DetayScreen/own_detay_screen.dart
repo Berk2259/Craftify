@@ -16,20 +16,20 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
   Widget getIconForOption(String option) {
     switch (option) {
       case 'Uhu':
-        return Image.asset('assets/images/glue.png', width: 20, height: 20);
+        return Image.asset('assets/images/glue.png', width: 30, height: 30);
       case 'Bant':
-        return Image.asset('assets/images/tape.png', width: 20, height: 20);
+        return Image.asset('assets/images/tape.png', width: 30, height: 30);
       case 'Makas':
-        return Image.asset('assets/images/scissor.png', width: 20, height: 20);
+        return Image.asset('assets/images/scissor.png', width: 30, height: 30);
       case 'Cetvel':
-        return Image.asset('assets/images/ruler.png', width: 20, height: 20);
+        return Image.asset('assets/images/ruler.png', width: 30, height: 30);
       case 'İğne':
-        return Image.asset('assets/images/needle.png', width: 20, height: 20);
+        return Image.asset('assets/images/needle.png', width: 30, height: 30);
       case 'Kağıt':
-        return Image.asset('assets/images/paper1.png', width: 20, height: 20);
+        return Image.asset('assets/images/paper1.png', width: 30, height: 30);
       default:
         // Tanımlanmayan seçenekler için varsayılan simge
-        return Icon(Icons.help_outline, size: 20, color: Colors.grey);
+        return Icon(Icons.help_outline, size: 30, color: Colors.grey);
     }
   }
 
@@ -125,10 +125,14 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 16.0),
+                                    padding: const EdgeInsets.only(left: 24.0),
                                     child: DropdownButton<String>(
+                                      iconEnabledColor: Colors.white,
                                       dropdownColor: Colors.white,
-                                      hint: const Text('Bir seçenek seçin'),
+                                      hint: const Text(
+                                        'Bir seçenek seçin',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
                                       value: secilenDeger,
                                       onChanged: (String? newValue) {
                                         setState(() {
@@ -197,7 +201,7 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
                                               item,
                                               style: const TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 18,
+                                                fontSize: 20,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
