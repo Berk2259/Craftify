@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../model/own_item_store.dart';
 
 class OwnDetayScreen extends StatefulWidget {
-  const OwnDetayScreen({super.key});
+  final String? initialName;
+  final List<String>? initialMaterials;
+  final int? editIndex;
+
+  const OwnDetayScreen({super.key, this.initialName, this.initialMaterials, this.editIndex});
 
   @override
   State<OwnDetayScreen> createState() => _OwnDetayScreenState();
@@ -12,6 +17,19 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
   String? secilenDeger;
   List<String> secenekler = ['Uhu', 'Bant', 'Makas', 'Cetvel', 'İğne', 'Kağıt'];
   List<String> liste = [];
+  final TextEditingController _nameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    OwnItemStore().load();
+    if (widget.initialName != null) {
+      _nameController.text = widget.initialName!;
+    }
+    if (widget.initialMaterials != null) {
+      liste = List.from(widget.initialMaterials!);
+    }
+  }
 
   Widget getIconForOption(String option) {
     switch (option) {
@@ -28,8 +46,38 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
       case 'Kağıt':
         return Image.asset('assets/images/paper1.png', width: 30, height: 30);
       default:
-        // Tanımlanmayan seçenekler için varsayılan simge
         return Icon(Icons.help_outline, size: 30, color: Colors.grey);
+    }
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _saveItem() async {
+    final name = _nameController.text.trim();
+    if (name.isNotEmpty && liste.isNotEmpty) {
+      if (widget.editIndex != null) {
+        await OwnItemStore().updateAt(widget.editIndex!, name, List.from(liste));
+      } else {
+        await OwnItemStore().addItem(name, List.from(liste));
+      }
+      await OwnItemStore().load();
+      setState(() {
+        _nameController.clear();
+        liste.clear();
+        secilenDeger = null;
+      });
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Ürün kaydedildi!')));
+      Navigator.pop(context); // Kaydedince geri dön
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Lütfen ürün adı ve en az bir malzeme girin.')),
+      );
     }
   }
 
@@ -55,7 +103,6 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
                 ),
                 child: Column(
                   children: [
-                    // Üst Bilgi Kutusu
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Container(
@@ -83,22 +130,23 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
                         ),
                       ),
                     ),
-
-                    // İçerik Kutusu
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Container(
+                          height: MediaQuery.of(context).size.height,
+                          width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: Colors.blue,
                           ),
                           child: Column(
                             children: [
-                              // TextField
+                              // Ürün adı TextField
                               Padding(
                                 padding: const EdgeInsets.all(16.0),
                                 child: TextField(
+                                  controller: _nameController,
                                   cursorColor: Colors.white,
                                   style: const TextStyle(color: Colors.white),
                                   decoration: const InputDecoration(
@@ -118,7 +166,6 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
                                   ),
                                 ),
                               ),
-
                               // Dropdown + Ekle Butonu
                               Row(
                                 mainAxisAlignment:
@@ -158,8 +205,7 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
                                     padding: const EdgeInsets.only(right: 16.0),
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        if (secilenDeger != null &&
-                                            !liste.contains(secilenDeger)) {
+                                        if (secilenDeger != null && !liste.contains(secilenDeger)) {
                                           setState(() {
                                             liste.add(secilenDeger!);
                                           });
@@ -170,9 +216,7 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
                                   ),
                                 ],
                               ),
-
                               const SizedBox(height: 10),
-
                               // Liste
                               Expanded(
                                 child: ListView.builder(
@@ -212,14 +256,11 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
                                   },
                                 ),
                               ),
-
                               // Kaydet Butonu
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: ElevatedButton.icon(
-                                  onPressed: () {
-                                    // Kaydetme işlemi buraya yazılabilir
-                                  },
+                                  onPressed: _saveItem,
                                   icon: const Icon(
                                     Icons.save_rounded,
                                     size: 25,
