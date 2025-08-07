@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:craftify/Screen/Screen.dart';
+import 'package:provider/provider.dart';
+import 'package:craftify/model/favorite_item_model.dart';
 
-class Gul extends StatefulWidget {
+class Gul extends StatelessWidget {
   const Gul({super.key});
 
   @override
-  State<Gul> createState() => _GulState();
-}
-
-class _GulState extends State<Gul> {
-  bool isFavorited = false;
-  void toggleFavorite() {
-    setState(() {
-      isFavorited = !isFavorited;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
+    final item = FavoriteItem(title: 'Gül Yapımı', imagePath: 'assets/images/indir.jpeg');
+    final isFavorited = favoriteProvider.isFavorite(item);
     return Container(
       height: 150,
       width: double.infinity,
@@ -68,17 +61,19 @@ class _GulState extends State<Gul> {
                 ),
                 Column(
                   children: [
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: IconButton(
-                        icon: Icon(
-                          isFavorited ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorited ? Colors.red : Colors.grey,
-                        ),
-                        onPressed: toggleFavorite,
-                        iconSize: 30,
+                    IconButton(
+                      icon: Icon(
+                        isFavorited ? Icons.favorite : Icons.favorite_border,
+                        color: isFavorited ? Colors.red : Colors.grey,
                       ),
+                      onPressed: () {
+                        if (isFavorited) {
+                          favoriteProvider.removeFavorite(item);
+                        } else {
+                          favoriteProvider.addFavorite(item);
+                        }
+                      },
+                      iconSize: 30,
                     ),
                   ],
                 ),

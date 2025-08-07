@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:craftify/model/model.dart';
+import 'package:craftify/model/favorite_item_model.dart';
 
 class ProfileOzellikCardWidget extends StatelessWidget {
   final ProfileOzellikCardModel ozellik;

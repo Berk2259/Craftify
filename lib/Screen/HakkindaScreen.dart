@@ -1,7 +1,7 @@
 import 'package:craftify/Widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:craftify/model/model.dart'; // Model burada tanımlı olmalı
+import 'package:craftify/model/favorite_item_model.dart'; // Model burada tanımlı olmalı
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

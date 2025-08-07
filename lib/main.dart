@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:craftify/Screen/Screen.dart';
+import 'package:provider/provider.dart';
+import 'package:craftify/model/model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: MainScreen());
+    return ChangeNotifierProvider(
+      create: (_) => FavoriteProvider(),
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: MainScreen()),
+    );
   }
 }
