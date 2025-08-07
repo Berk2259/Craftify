@@ -60,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
               ozellik: ProfileOzellikCardModel(
                 Baslik: 'Kendi Bölümün',
                 Aciklama: 'Kendi Origamini uygualamaya ekle',
-                image: 'assets/images/pdf.png',
+                image: 'assets/images/file.png',
                 color: Colors.red,
               ),
             ),
@@ -69,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
                 Baslik: 'Favoriler',
                 Aciklama: 'Beğendiğin Origamiyi Favorile',
                 image: 'assets/images/heart.png',
-                color: Colors.deepPurple,
+                color: Colors.lightBlue,
               ),
             ),
             ProfileOzellikCardWidget(
@@ -77,7 +77,7 @@ class ProfileScreen extends StatelessWidget {
                 Baslik: 'Ana Sayfa',
                 Aciklama: 'Sevebileceğin origamileri burda bulabilirsin',
                 image: 'assets/images/house.png',
-                color: Colors.lightBlue,
+                color: Colors.green,
               ),
             ),
             ProfileOzellikCardWidget(
@@ -85,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
                 Baslik: 'Profil Sayfası',
                 Aciklama: 'Uygulama hakkında bilgiler bulunur',
                 image: 'assets/images/logo.png',
-                color: Colors.blue,
+                color: Colors.deepPurple,
               ),
             ),
             SizedBox(height: 100),

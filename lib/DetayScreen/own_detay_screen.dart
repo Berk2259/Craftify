@@ -18,6 +18,24 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
         leading: const BackButton(color: Colors.white),
         centerTitle: true,
       ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white70,
+                ),
+                child: Column(children: [],),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:craftify/Screen/Screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:craftify/Widget/widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -20,18 +21,10 @@ class _MainScreenState extends State<MainScreen> {
     ProfileScreen(),
   ];
   final List<Widget> _icons = [
-    Icon(FontAwesomeIcons.file, size: 30, color: Colors.white),
-    Icon(Icons.favorite, size: 30, color: Colors.white),
-    Icon(Icons.home, size: 30, color: Colors.white),
-    ClipRRect(
-      borderRadius: BorderRadius.circular(25),
-      child: Image.asset(
-        'assets/images/logo.png',
-        width: 30,
-        height: 30,
-        fit: BoxFit.cover,
-      ),
-    ),
+    ClipReactImageWidget(image: 'assets/images/file.png'),
+    ClipReactImageWidget(image: 'assets/images/heart.png'),
+    ClipReactImageWidget(image: 'assets/images/house.png'),
+    ClipReactImageWidget(image: 'assets/images/logo.png'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -40,11 +33,12 @@ class _MainScreenState extends State<MainScreen> {
       body: _pages[_page],
       bottomNavigationBar: CurvedNavigationBar(
         animationDuration: Duration(milliseconds: 300),
-        height: 60,
+        height: 65,
         items: _icons,
         index: _page,
         backgroundColor: Colors.transparent,
         color: Colors.deepPurple.shade900,
+        buttonBackgroundColor: Colors.transparent,
         onTap: (value) {
           setState(() {
             _page = value;
