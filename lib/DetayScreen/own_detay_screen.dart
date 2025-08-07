@@ -64,7 +64,7 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
       } else {
         await OwnItemStore().addItem(name, List.from(liste));
       }
-      await OwnItemStore().load();
+      // No need to call load() here since the parent screen will reload
       setState(() {
         _nameController.clear();
         liste.clear();
@@ -73,7 +73,7 @@ class _OwnDetayScreenState extends State<OwnDetayScreen> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('Ürün kaydedildi!')));
-      Navigator.pop(context); // Kaydedince geri dön
+      Navigator.pop(context, true); // Return true to indicate successful save
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Lütfen ürün adı ve en az bir malzeme girin.')),

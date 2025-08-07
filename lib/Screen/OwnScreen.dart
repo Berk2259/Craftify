@@ -50,11 +50,13 @@ class _OwnScreenState extends State<OwnScreen> {
           foregroundColor: Colors.white,
           backgroundColor: Colors.deepPurple.shade900,
           onPressed: () async {
-            await Navigator.push(
+            final result = await Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => OwnDetayScreen()),
             );
-            await _loadItems();
+            if (result == true) {
+              await _loadItems();
+            }
           },
           child: Icon(Icons.add),
         ),
@@ -134,7 +136,7 @@ class _OwnScreenState extends State<OwnScreen> {
                                       trailing: IconButton(
                                         icon: Icon(Icons.arrow_forward_ios),
                                         onPressed: () async {
-                                          await Navigator.push(
+                                          final result = await Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                               builder:
@@ -145,6 +147,9 @@ class _OwnScreenState extends State<OwnScreen> {
                                                   ),
                                             ),
                                           );
+                                          if (result == true) {
+                                            await _loadItems(); // Refresh the list after editing
+                                          }
                                         },
                                       ),
                                     ),
